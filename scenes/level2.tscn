@@ -1,0 +1,113 @@
+[gd_scene load_steps=15 format=4 uid="uid://bl78i8n2et7gx"]
+
+[ext_resource type="PackedScene" uid="uid://bc2fujtl13g10" path="res://scenes/Player.tscn" id="1_ky5uj"]
+[ext_resource type="Texture2D" uid="uid://cela4hnu06pql" path="res://assets/kenney_platformerpack/Spritesheets/spritesheet_gr_stone.png" id="2_3yxm6"]
+[ext_resource type="Script" path="res://scenes/map_border_2.gd" id="3_ojpnx"]
+[ext_resource type="Script" path="res://scenes/win_cond.gd" id="4_gjkfe"]
+[ext_resource type="Texture2D" uid="uid://dnbxyeoio551j" path="res://assets/kenney_platformerpack/PNG/Enemies/slimePurple_move.png" id="5_eqdo2"]
+[ext_resource type="PackedScene" uid="uid://b2i0r41axfrob" path="res://scenes/sawcons.tscn" id="6_0vxf3"]
+[ext_resource type="Script" path="res://scenes/spawner.gd" id="7_y6nm3"]
+[ext_resource type="Script" path="res://scenes/saw_spanner_2.gd" id="8_f2jw0"]
+[ext_resource type="Texture2D" uid="uid://cvuv75kt8mvxt" path="res://assets/kenney_platformerpack/PNG/Backgrounds/blue_desert.png" id="8_hybhs"]
+[ext_resource type="PackedScene" uid="uid://c65ix84a82n8r" path="res://scenes/frog_drops.tscn" id="9_hlnmk"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t8mif"]
+texture = ExtResource("2_3yxm6")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(64, 64, -64, 64, -64, -64, 64, -64)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, 12, -13, 48, 64, 64, 64, -64, -64, -64)
+4:0/0 = 0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(64, 12, 13, 48, -64, 64, -64, -64, 64, -64)
+5:0/0 = 0
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(64, 64, -19, 9, -64, -19, -64, -64, 64, -64)
+6:0/0 = 0
+6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, 64, 19, 9, 64, -19, 64, -64, -64, -64)
+7:0/0 = 0
+7:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+8:0/0 = 0
+8:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, 12, 64, 10, 64, -64, -64, -64)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, 12, 64, 10, 64, -64, -64, -64)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, 12, 64, 10, 64, -64, -64, -64)
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, 12, 64, 10, 64, -64, -64, -64)
+4:1/0 = 0
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(64, 64, -64, 64, -64, -64, 3, 3)
+5:1/0 = 0
+5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(64, -64, 9, -7, -64, 64, 64, 64)
+6:1/0 = 0
+6:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+7:1/0 = 0
+7:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+8:1/0 = 0
+8:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+
+[sub_resource type="TileSet" id="TileSet_bve1d"]
+tile_size = Vector2i(128, 128)
+physics_layer_0/collision_layer = 1
+sources/1 = SubResource("TileSetAtlasSource_t8mif")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pwekj"]
+size = Vector2(6759, 113)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rgck1"]
+size = Vector2(144, 101.5)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_ky5uj")]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+scale = Vector2(0.5, 0.5)
+tile_map_data = PackedByteArray("AAD+/wEAAQADAAAAAAD//wEAAQAHAAEAAAAAAAEAAQAHAAEAAAABAAEAAQAEAAAAAAAHAAAAAQAHAAEAAAAIAAAAAQAHAAEAAAAJAAAAAQAHAAEAAAAKAAAAAQAEAAAAAAAYAPv/AQABAAAAAAAYAPz/AQABAAAAAAAYAP3/AQABAAAAAAAYAP7/AQABAAAAAAAYAP//AQABAAAAAAAYAAAAAQABAAAAAAAYAAEAAQABAAAAAAAYAAIAAQABAAAAAAAYAAMAAQABAAAAAAAZAPv/AQABAAAAAAAZAPz/AQABAAAAAAAZAP3/AQABAAAAAAAZAP7/AQABAAAAAAAZAP//AQABAAAAAAAZAAAAAQABAAAAAAAZAAEAAQABAAAAAAAZAAIAAQABAAAAAAAZAAMAAQABAAAAAAAaAPv/AQABAAAAAAAaAPz/AQABAAAAAAAaAP3/AQABAAAAAAAaAP7/AQABAAAAAAAaAP//AQABAAAAAAAaAAAAAQABAAAAAAAaAAEAAQABAAAAAAAaAAIAAQABAAAAAAAaAAMAAQABAAAAAAAOAPT/AQAHAAEAAAAOAPX/AQABAAAAAAAPAPT/AQAHAAEAAAAPAPX/AQABAAAAAAAQAPT/AQAHAAEAAAAQAPX/AQABAAAAAAARAPX/AQABAAAAAAABAPL/AQAHAAEAAAABAPP/AQABAAAAAAACAPL/AQAHAAEAAAACAPP/AQABAAAAAAADAPL/AQAHAAEAAAADAPP/AQABAAAAAAAEAPL/AQAHAAEAAAAEAPP/AQABAAAAAAAFAPL/AQAHAAEAAAAFAPP/AQABAAAAAAAGAPL/AQAHAAEAAAAGAPP/AQABAAAAAAASAAMAAQABAAEAAAATAAMAAQACAAEAAAAUAAMAAQADAAEAAAAVAAgAAQABAAEAAAAWAAgAAQACAAEAAAAXAAgAAQADAAEAAAAbAAcAAQABAAEAAAAcAAcAAQACAAEAAAAdAAcAAQADAAEAAAAMAPT/AQAFAAAAAAARAPT/AQAHAAEAAAASAPT/AQAEAAEAAAATAPX/AQAEAAEAAAASAPX/AQAHAAAAAAANAPT/AQAHAAEAAAANAPX/AQABAAAAAAAVAPj/AQAFAAAAAAAWAPj/AQAGAAAAAAAFAAAAAQADAAAAAAAGAAAAAQAHAAEAAAANAP//AQADAAAAAAAOAP//AQAHAAEAAAAPAP//AQAHAAEAAAAQAP//AQAHAAEAAAARAP//AQAEAAAAAAAcAP//AQABAAEAAAAdAP//AQACAAEAAAAeAP//AQADAAEAAAAgAPr/AQADAAAAAAAhAPr/AQAHAAEAAAAiAPr/AQAHAAEAAAAjAPr/AQAHAAEAAAAkAPr/AQAEAAAAAAAgAAYAAQABAAEAAAAhAAYAAQACAAEAAAAiAAYAAQADAAEAAAAlAAUAAQABAAEAAAAmAAUAAQACAAEAAAAnAAUAAQADAAEAAAAhAAAAAQABAAEAAAAiAAAAAQACAAEAAAAjAAAAAQADAAEAAAAlAAEAAQABAAEAAAAmAAEAAQACAAEAAAAnAAEAAQADAAEAAAAiAP7/AQAAAAEAAAApAAQAAQAFAAEAAAAqAAQAAQAHAAEAAAArAAQAAQAEAAEAAAApAAUAAQAIAAAAAAAqAAUAAQABAAAAAAArAAUAAQAHAAAAAAArAAMAAQAAAAEAAAAbAPr/AQAGAAAAAAAZAPr/AQAHAAEAAAAaAPr/AQAHAAEAAAAYAPr/AQAGAAEAAAAmAPz/AQAAAAEAAAA=")
+tile_set = SubResource("TileSet_bve1d")
+
+[node name="MapBorder" type="Area2D" parent="."]
+position = Vector2(427, 479)
+script = ExtResource("3_ojpnx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapBorder"]
+position = Vector2(365.5, 350.5)
+shape = SubResource("RectangleShape2D_pwekj")
+
+[node name="WinCond" type="Area2D" parent="."]
+position = Vector2(-91, 59)
+script = ExtResource("4_gjkfe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WinCond"]
+position = Vector2(287, -1005.25)
+shape = SubResource("RectangleShape2D_rgck1")
+
+[node name="Sprite2D" type="Sprite2D" parent="WinCond"]
+position = Vector2(274, -1021)
+texture = ExtResource("5_eqdo2")
+flip_h = true
+
+[node name="SawSpanwner" type="Node2D" parent="."]
+position = Vector2(-501, -118)
+script = ExtResource("8_f2jw0")
+obstacle = ExtResource("6_0vxf3")
+
+[node name="SawSpanner2" type="Node2D" parent="."]
+position = Vector2(2067, -1468)
+script = ExtResource("7_y6nm3")
+obstacle = ExtResource("9_hlnmk")
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -1
+z_as_relative = false
+position = Vector2(786, -422)
+scale = Vector2(6.75087, 2.9691)
+texture = ExtResource("8_hybhs")
+
+[connection signal="body_entered" from="MapBorder" to="MapBorder" method="_on_border_body_entered"]
+[connection signal="body_entered" from="WinCond" to="WinCond" method="_on_border_body_entered"]

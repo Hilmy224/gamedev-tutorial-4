@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://s8pt3d6cddkr"]
+
+[ext_resource type="Script" path="res://rigid_body_2d.gd" id="1_vlbpi"]
+[ext_resource type="Texture2D" uid="uid://bivk5n8i3vnqc" path="res://assets/kenney_platformerpack/PNG/Enemies/fishBlue.png" id="2_wp8et"]
+[ext_resource type="Script" path="res://scenes/spawned_lose.gd" id="3_mtf78"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6ntk7"]
+radius = 25.0
+height = 76.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mleim"]
+radius = 38.0
+height = 124.0
+
+[node name="FishEnemy" type="RigidBody2D"]
+collision_mask = 2
+script = ExtResource("1_vlbpi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_wp8et")
+flip_v = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_6ntk7")
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("3_mtf78")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_mleim")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

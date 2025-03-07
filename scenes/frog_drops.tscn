@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://c65ix84a82n8r"]
+
+[ext_resource type="Texture2D" uid="uid://b6he6qvcoqefl" path="res://assets/kenney_platformerpack/PNG/Enemies/frog_move.png" id="1_6e1r2"]
+[ext_resource type="Script" path="res://scenes/spawned_lose.gd" id="2_17ir5"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_sg246"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w0i36"]
+radius = 25.0
+height = 76.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7exkd"]
+radius = 44.0
+height = 124.0
+
+[node name="FrogDrops" type="RigidBody2D"]
+collision_mask = 2
+physics_material_override = SubResource("PhysicsMaterial_sg246")
+gravity_scale = 0.17
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-8, 4)
+rotation = 1.02432
+texture = ExtResource("1_6e1r2")
+flip_h = true
+flip_v = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_w0i36")
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("2_17ir5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_7exkd")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

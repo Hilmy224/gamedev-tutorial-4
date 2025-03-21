@@ -1,4 +1,13 @@
-[gd_scene format=3 uid="uid://dkyqkq05a57gr"]
+[gd_scene load_steps=8 format=3 uid="uid://dkyqkq05a57gr"]
+
+[ext_resource type="Texture2D" uid="uid://bu0uruq2j50tn" path="res://assets/Extra/GloorbinBG.png" id="1_84y6v"]
+[ext_resource type="FontFile" uid="uid://c7lodnj3rjf4q" path="res://assets/Extra/Daydream.ttf" id="2_0136n"]
+[ext_resource type="FontFile" uid="uid://dpvng02dvnse4" path="res://assets/Extra/VCR_OSD_MONO_1.001.ttf" id="3_qdw84"]
+[ext_resource type="Script" path="res://scenes/link_button.gd" id="4_sqhxf"]
+[ext_resource type="Script" path="res://scenes/select_level.gd" id="5_e5rpr"]
+[ext_resource type="Texture2D" uid="uid://5y02ouavt4cw" path="res://assets/Extra/Glorb.png" id="5_p8mtm"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1lq38"]
 
 [node name="MarginContainer" type="MarginContainer"]
 anchors_preset = 15
@@ -7,26 +16,51 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -1
+layout_mode = 2
+texture = ExtResource("1_84y6v")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_bottom = 240
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 4
+size_flags_vertical = 8
 localize_numeral_system = false
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
 
-[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-text = "RUN! RUN! RUN! RUN! RUN! RUN! RUN! RUN!"
+theme_override_fonts/font = ExtResource("2_0136n")
+theme_override_font_sizes/font_size = 10
+text = "ITS GLORBIN TIME"
+label_settings = SubResource("LabelSettings_1lq38")
 
-[node name="LinkButton" type="LinkButton" parent="HBoxContainer/VBoxContainer"]
+[node name="LinkButton" type="LinkButton" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-text = "Buttan"
+theme_override_fonts/font = ExtResource("3_qdw84")
+text = "Play"
+script = ExtResource("4_sqhxf")
+scene_to_load = "level1"
 
-[node name="LinkButton2" type="LinkButton" parent="HBoxContainer/VBoxContainer"]
+[node name="LinkButton2" type="LinkButton" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-text = "Buttan2"
+theme_override_fonts/font = ExtResource("3_qdw84")
+text = "Levels"
+script = ExtResource("5_e5rpr")
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
+texture = ExtResource("5_p8mtm")
+flip_h = true
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/LinkButton" to="MarginContainer/HBoxContainer/VBoxContainer/LinkButton" method="_on_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/LinkButton2" to="MarginContainer/HBoxContainer/VBoxContainer/LinkButton2" method="_on_pressed"]

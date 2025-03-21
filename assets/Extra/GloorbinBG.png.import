@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://byhldrl64tixm"
-path="res://.godot/imported/alienBiege_walk2.png-5c055622b53c20bb22f06184941da5dc.ctex"
+uid="uid://bu0uruq2j50tn"
+path="res://.godot/imported/GloorbinBG.png-ec8a5291ff2ab41c766931fcee05337b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/kenney_platformerpack/PNG/Players/Variable sizes/Beige/alienBiege_walk2.png"
-dest_files=["res://.godot/imported/alienBiege_walk2.png-5c055622b53c20bb22f06184941da5dc.ctex"]
+source_file="res://assets/Extra/GloorbinBG.png"
+dest_files=["res://.godot/imported/GloorbinBG.png-ec8a5291ff2ab41c766931fcee05337b.ctex"]
 
 [params]
 

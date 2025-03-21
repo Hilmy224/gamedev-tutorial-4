@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://rigid_body_2d.gd" id="1_vlbpi"]
 [ext_resource type="Texture2D" uid="uid://bivk5n8i3vnqc" path="res://assets/kenney_platformerpack/PNG/Enemies/fishBlue.png" id="2_wp8et"]
-[ext_resource type="Script" path="res://scenes/spawned_lose.gd" id="3_mtf78"]
+[ext_resource type="Script" path="res://scenes/spawnedLose1.gd" id="3_0fbri"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6ntk7"]
 radius = 25.0
@@ -24,7 +24,7 @@ flip_v = true
 shape = SubResource("CapsuleShape2D_6ntk7")
 
 [node name="Area2D" type="Area2D" parent="."]
-script = ExtResource("3_mtf78")
+script = ExtResource("3_0fbri")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CapsuleShape2D_mleim")

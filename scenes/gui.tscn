@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://csar6ciedpd4j"]
+
+[ext_resource type="FontFile" uid="uid://dpvng02dvnse4" path="res://assets/Extra/VCR_OSD_MONO_1.001.ttf" id="1_gi5qx"]
+[ext_resource type="Script" path="res://Lives.gd" id="1_ye7ry"]
+
+[node name="GUI" type="MarginContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.21229, 0.41263, 0.0340535, 1)
+theme_override_fonts/font = ExtResource("1_gi5qx")
+script = ExtResource("1_ye7ry")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://bl78i8n2et7gx"]
+[gd_scene load_steps=16 format=4 uid="uid://bl78i8n2et7gx"]
 
 [ext_resource type="PackedScene" uid="uid://bc2fujtl13g10" path="res://scenes/Player.tscn" id="1_ky5uj"]
 [ext_resource type="Texture2D" uid="uid://cela4hnu06pql" path="res://assets/kenney_platformerpack/Spritesheets/spritesheet_gr_stone.png" id="2_3yxm6"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://scenes/saw_spanner_2.gd" id="8_f2jw0"]
 [ext_resource type="Texture2D" uid="uid://cvuv75kt8mvxt" path="res://assets/kenney_platformerpack/PNG/Backgrounds/blue_desert.png" id="8_hybhs"]
 [ext_resource type="PackedScene" uid="uid://c65ix84a82n8r" path="res://scenes/frog_drops.tscn" id="9_hlnmk"]
+[ext_resource type="PackedScene" uid="uid://csar6ciedpd4j" path="res://scenes/gui.tscn" id="11_imf7u"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t8mif"]
 texture = ExtResource("2_3yxm6")
@@ -62,7 +63,7 @@ size = Vector2(6759, 113)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rgck1"]
 size = Vector2(144, 101.5)
 
-[node name="Node2D" type="Node2D"]
+[node name="level2" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_ky5uj")]
 
@@ -80,7 +81,7 @@ position = Vector2(365.5, 350.5)
 shape = SubResource("RectangleShape2D_pwekj")
 
 [node name="WinCond" type="Area2D" parent="."]
-position = Vector2(-91, 59)
+position = Vector2(-31, 59)
 script = ExtResource("4_gjkfe")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WinCond"]
@@ -108,6 +109,10 @@ z_as_relative = false
 position = Vector2(786, -422)
 scale = Vector2(6.75087, 2.9691)
 texture = ExtResource("8_hybhs")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GUI" parent="CanvasLayer" instance=ExtResource("11_imf7u")]
 
 [connection signal="body_entered" from="MapBorder" to="MapBorder" method="_on_border_body_entered"]
 [connection signal="body_entered" from="WinCond" to="WinCond" method="_on_border_body_entered"]
